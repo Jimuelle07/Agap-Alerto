@@ -53,8 +53,9 @@ Built in response to the September 2026 Manila leptospirosis epidemic
 ## Where to look
 | Want to know... | Read... |
 |---|---|
+| **Everything — which doc owns which fact, start here** | [`docs/index.md`](docs/index.md) |
 | The problem, evidence, and the one risky bet we're making | [`seed/idea.md`](seed/idea.md) |
 | Whether an independent reviewer thinks this is worth building | [`seed/validation.md`](seed/validation.md) |
-| What we're building and why, in detail | [`docs/prd.md`](docs/prd.md), [`docs/index.md`](docs/index.md) |
+| What we're building and why, in detail | [`docs/prd.md`](docs/prd.md) |
 | How the build is sequenced | [`docs/implementation-plan.md`](docs/implementation-plan.md) |
 | How to work on this | [`AGENTS.md`](AGENTS.md) |
