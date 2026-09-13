@@ -1,0 +1,22 @@
+---
+description: Stack-currency guardrail. Verify framework/SDK conventions against pinned-version docs before emitting code; never from memory.
+globs:
+  - "app/**/*.py"
+  - "tests/**/*.py"
+alwaysApply: false
+---
+
+# Stack currency (verify before coding)
+
+- **Do not emit framework code from training memory.** Before writing against FastAPI or
+  SQLAlchemy, confirm the current convention in that pinned version's official docs. If you cannot
+  verify, say so and mark the line to confirm — never ship a plausible-but-stale API.
+- This register **overrides** your training memory when they conflict.
+
+| ❌ Stale / from memory | ✅ Current (this project) | Why |
+|---|---|---|
+| — | — | no stale API caught yet — no code exists |
+
+- Pinned versions: to be set at `TASK-001` (`docs/handoff/TASK-001.md`).
+- This project has no `methods.md` (`computes_numbers: false`) — no computed number requires an
+  `EQ-###` citation.

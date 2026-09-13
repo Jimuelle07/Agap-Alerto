@@ -1,0 +1,22 @@
+---
+description: INV-001/INV-002 guardrail for the core business-rule layer. Loaded when touching app/core or resident-facing copy.
+globs:
+  - "app/core/**/*.py"
+  - "app/web/**/*.py"
+alwaysApply: false
+---
+
+# Invariant guard — INV-001 / INV-002
+
+- **INV-001** — never let a response include a dose amount, frequency, or duration (e.g., "200mg,"
+  "twice daily," "once a week"). Route the resident to ask on-site staff instead. Run
+  `app/core/copy_guard.assert_no_banned_terms` on any new outbound template before it ships.
+- **INV-002** — never surface a site's status as "open"/"stocked" without checking it against
+  `BR-001`'s freshness window (4 hours, `docs/prd.md`). `confirmed_at` is always server-assigned
+  (`now()`), never accepted from a client — this is load-bearing, not a style preference
+  (`docs/technical-design.md` Key decisions).
+- A change to either invariant's enforcement logic gets a `docs/decision-ledger.md` §5 audit line
+  in the same commit (`hooks/pre-commit` reminds, does not block, on this).
+- Known gap: `TC-N01` (INV-001's negative test) is a static banned-term list, brittle against
+  paraphrase (`docs/validation-report.md` §3/§4, `docs/harness.md` S13). Do not treat a green
+  `TC-N01` as proof INV-001 holds for new copy — read it too.
